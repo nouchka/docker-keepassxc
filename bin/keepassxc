@@ -1,0 +1,15 @@
+#!/bin/bash
+
+mkdir -p ${HOME}/.config/keepassxc
+mkdir -p ${HOME}/Documents/keys/
+
+docker run --rm -d \
+	-v /tmp/.X11-unix:/tmp/.X11-unix \
+	-v /etc/machine-id:/etc/machine-id:ro \
+	-v /usr/share/X11/xkb:/usr/share/X11/xkb/:ro \
+	-v ${HOME}/.config/keepassxc:/home/developer/.config/keepassxc \
+	-v ${HOME}/Documents/keys/:/home/developer/keys \
+	-e DISPLAY=unix$DISPLAY \
+	-p 19455:19455 \
+	--name keepass \
+	nouchka/keepassxc
