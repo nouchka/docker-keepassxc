@@ -12,4 +12,4 @@ docker run --rm -d \
 	-e DISPLAY=unix$DISPLAY \
 	-p 19455:19455 \
 	--name keepass \
-	nouchka/keepassxc
+	nouchka/keepassxc "$@"
