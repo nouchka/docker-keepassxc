@@ -4,9 +4,11 @@ services:
 
 before_install:
   - gem install fpm package_cloud
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
 script:
-  - make push-deb
+  - make test
+  - if [ "$TRAVIS_BRANCH" = "master" ]; then make push-deb; fi
 
 notifications:
   email: docker@katagena.com
