@@ -1,4 +1,5 @@
 DOCKER_IMAGE=keepassxc
+VERSIONS=2
 
 include Makefile.docker
 
